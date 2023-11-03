@@ -1,0 +1,34 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: wick
+  labels:
+    app: wick
+  rules:
+    - apiGroups: [ "" ]
+      resources: [ "pods", "nodes" ]
+      verbs: [ "get", "list", "watch" ]
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: wick
+  namespace: kube-system
+  labels:
+    app: wick
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: wick
+  labels:
+    app: wick
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: wick
+subjects:
+  - kind: ServiceAccount
+    name: wick
+    namespace: kube-system

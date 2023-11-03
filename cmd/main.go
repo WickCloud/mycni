@@ -17,21 +17,54 @@ limitations under the License.
 package main
 
 import (
+	"fmt"
+
 	"github.com/containernetworking/cni/pkg/version"
 	bv "github.com/containernetworking/plugins/pkg/utils/buildversion"
 
 	"github.com/WickCloud/wick/pkg/skel"
+	"github.com/WickCloud/wick/pkg/util"
 )
 
 func cmdAdd(args *skel.CmdArgs) error {
+	fmt.Println("进入到cmdAdd")
+	data := map[string]interface{}{
+		"containerId": args.ContainerID,
+		"netns":       args.Netns,
+		"ifName":      args.IfName,
+		"args":        args.Args,
+		"path":        args.Path,
+		"stdinData":   string(args.StdinData),
+	}
+	util.Print(data)
 	return nil
 }
 
 func cmdDel(args *skel.CmdArgs) error {
+	fmt.Println("进入到cmdDel")
+	data := map[string]interface{}{
+		"containerId": args.ContainerID,
+		"netns":       args.Netns,
+		"ifName":      args.IfName,
+		"args":        args.Args,
+		"path":        args.Path,
+		"stdinData":   string(args.StdinData),
+	}
+	util.Print(data)
 	return nil
 }
 
 func cmdCheck(args *skel.CmdArgs) error {
+	fmt.Println("进入到cmdCheck")
+	data := map[string]interface{}{
+		"containerId": args.ContainerID,
+		"netns":       args.Netns,
+		"ifName":      args.IfName,
+		"args":        args.Args,
+		"path":        args.Path,
+		"stdinData":   string(args.StdinData),
+	}
+	util.Print(data)
 	return nil
 }
 
